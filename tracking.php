@@ -30,6 +30,8 @@ add_action( 'admin_head', 'script_jquery_ui' );
 
 
 register_activation_hook( __FILE__, 'create_databases_customer' );
+register_activation_hook( __FILE__, 'create_databases_status' );
+register_activation_hook( __FILE__, 'create_databases_process' );
 
 
 ?>
