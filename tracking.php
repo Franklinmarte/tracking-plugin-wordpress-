@@ -12,9 +12,9 @@
 
 $plugin_url = WP_PLUGIN_URL . '/tracking';
 
-include "shortcodes/form.php";
-include "admin/config-admin.php";
-
+include 'shortcodes/form.php';
+include 'admin/config-admin.php';
+include 'function/databases.php';
 
 
 function style_tracking()
@@ -27,4 +27,9 @@ function script_jquery_ui()
 }
 add_action( 'wp_head', 'style_tracking' );
 add_action( 'admin_head', 'script_jquery_ui' );
+
+
+register_activation_hook( __FILE__, 'create_databases_customer' );
+
+
 ?>
