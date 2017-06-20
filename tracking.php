@@ -1,6 +1,6 @@
 <?php 
 /*
-*Plugin name: Mi Primer plugin con shortcodes
+*Plugin name: Tracking Process
 *Verzion: 1.0
 *Plugin URI: www.cloudnine.com.do
 *description: mi primer plugin implementando los shortcodes
@@ -9,6 +9,7 @@
 
 
 */
+  
 
 $plugin_url = WP_PLUGIN_URL . '/tracking';
 

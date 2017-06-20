@@ -18,5 +18,20 @@
    <?php include "add-status.php"; ?>
   </div>
   <div id="tabs-3">
-    <?php include "add-process.php"; ?>
+    <?php 
+    global $wpdb;
+    $myrows = array();
+    $myrows = $wpdb->get_results( "SELECT * FROM wp_tk_customer" );
+    foreach ($myrows as $myrow) {
+      echo $myrow->name;
+      echo "<br>";
+
+      
+     }
+   
+   
+
+   
+    include "add-process.php"; ?>
+
   </div>

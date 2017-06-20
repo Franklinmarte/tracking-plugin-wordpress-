@@ -19,7 +19,7 @@ function create_databases_customer() {
 	$sql = "CREATE TABLE $table_name (
 		id_customer INT(11) NOT NULL AUTO_INCREMENT,
 		name VARCHAR(50) NOT NULL , 
-		laste_name VARCHAR(50) NOT NULL , 
+		last_name VARCHAR(50) NOT NULL , 
 		email VARCHAR(50) NOT NULL , 
 	    create_date DATE NOT NULL ,
 		PRIMARY KEY  (id_customer)
@@ -48,6 +48,7 @@ function create_databases_status()
 	require_once( ABSPATH .  'wp-admin/includes/upgrade.php' );
 	dbDelta($sql);
 }
+//create databases process
 function create_databases_process()
 {
 	global $wpdb;
@@ -72,7 +73,30 @@ function create_databases_process()
 	require_once( ABSPATH .  'wp-admin/includes/upgrade.php' );
 	dbDelta($sql);
 }
+//add new customer
+function insert_customer($name,$last_name,$email)
+{
+	global $wpdb;
+	//We validate that name, surname and mail are not empty
 
+	if (!$name=='' and !$last_name=='' and !$email=='') {
+		$date = array(
+		'id_customer' => NULL,
+		'name' => $name,
+		'last_name' => $last_name,
+		'email' => $email,
+		'create_date' => current_time('mysql', 1)
+
+		);
+	$wpdb->insert('wp_tk_customer', $date);
+	return True;
+	}else
+	{
+		return False;
+	}
+
+
+}
 
 
  ?>

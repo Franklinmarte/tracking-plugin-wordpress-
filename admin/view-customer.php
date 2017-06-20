@@ -59,12 +59,22 @@
 <form action="" method="post" name="add-customer">
 	<label> <b><?php esc_html_e("Nombres") ?></b></label>
 	<input type="text" name="name" placeholder="<?php esc_html_e("Nombres") ?>"  class="regular-text" /><br><br>
+	<input type="hidden" name="new_customer">
 	<label> <b><?php esc_html_e("Apellidos") ?></b></label>
-	<input type="text" name="apellido" placeholder="<?php esc_html_e("Apellidos") ?>"  class="regular-text" /><br><br>
+	<input type="text" name="last_name" placeholder="<?php esc_html_e("Apellidos") ?>"  class="regular-text" /><br><br>
 	<label> <b><?php esc_html_e("Correo") ?></b></label>
 	<input type="text" name="email" placeholder="<?php esc_html_e("Correo") ?>"  class="regular-text" /><br><br>
 	
 	<input class="button-primary" type="submit" name="add_customer" value="<?php esc_attr_e( 'Agregar' ); ?>" />
+
+	<?php if (isset($_POST['new_customer'])): 
+			if (insert_customer($_POST['name'], $_POST['last_name'], $_POST['email'])== true) {
+				echo "registrado";
+			}else
+			{
+				echo "no registrado";
+			}
+	 	  endif ?>
 </form>
 </div>
 
