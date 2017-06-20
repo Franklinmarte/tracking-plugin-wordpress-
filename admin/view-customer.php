@@ -56,13 +56,13 @@
 
 <div class="form-wrap">
 	<h2><?php esc_html_e("Agregar nuevo cliente") ?></h2>
-<form action="" method="post" name="add-customer">
-	<label> <b><?php esc_html_e("Nombres") ?></b></label>
+<form action="" method="POST" name="add-customer">
+	<label> <b><?php esc_html_e("Nombres*") ?></b></label>
 	<input type="text" name="name" placeholder="<?php esc_html_e("Nombres") ?>"  class="regular-text" /><br><br>
 	<input type="hidden" name="new_customer">
-	<label> <b><?php esc_html_e("Apellidos") ?></b></label>
+	<label> <b><?php esc_html_e("Apellidos*") ?></b></label>
 	<input type="text" name="last_name" placeholder="<?php esc_html_e("Apellidos") ?>"  class="regular-text" /><br><br>
-	<label> <b><?php esc_html_e("Correo") ?></b></label>
+	<label> <b><?php esc_html_e("Correo*") ?></b></label>
 	<input type="text" name="email" placeholder="<?php esc_html_e("Correo") ?>"  class="regular-text" /><br><br>
 	
 	<input class="button-primary" type="submit" name="add_customer" value="<?php esc_attr_e( 'Agregar' ); ?>" />

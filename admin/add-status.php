@@ -56,15 +56,23 @@
 
 <div class="form-wrap">
 	<h2><?php esc_html_e("Agregar nuevo estado") ?></h2>
-<form action="" method="post" name="add-customer">
+<form action="#tabs-2" method="post" name="add-customer">
 	<label> <b><?php esc_html_e("Titulo de estado") ?></b></label>
 	<input type="text" name="status" placeholder="<?php esc_html_e("estado") ?>"  class="regular-text" /><br><br>
-
-	
+	<input type="hidden" name="new_status">
 	<input class="button-primary" type="submit" name="add_customer" value="<?php esc_attr_e( 'Agregar' ); ?>" />
 </form>
 </div>
-
+	<?php 
+		if (isset($_POST['new_status'])) {
+			if (insert_status($_POST['status'])==True) {
+				echo "registrado";
+			}else
+			{
+				echo "no registrado";
+			}
+		}
+	 ?>
 <br class="clear">
 </div>
 </div>

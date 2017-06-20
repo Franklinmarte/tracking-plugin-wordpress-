@@ -79,24 +79,37 @@ function insert_customer($name,$last_name,$email)
 	global $wpdb;
 	//We validate that name, surname and mail are not empty
 
-	if (!$name=='' and !$last_name=='' and !$email=='') {
-		$date = array(
-		'id_customer' => NULL,
-		'name' => $name,
-		'last_name' => $last_name,
-		'email' => $email,
-		'create_date' => current_time('mysql', 1)
-
+	if (!$name==' ' and !$last_name==' ' and !$email==' ') {
+		$date = array
+		(
+			'id_customer' => NULL,
+			'name' => $name,
+			'last_name' => $last_name,
+			'email' => $email,
+			'create_date' => current_time('mysql', 1)
 		);
-	$wpdb->insert('wp_tk_customer', $date);
-	return True;
-	}else
-	{
-		return False;
+		if ($wpdb->insert('wp_tk_customer', $date)==True) { return True; }
+	
+	}else { return False; }
+
+}
+
+function insert_status($status)
+{
+	global $wpdb;
+
+	if (!$status == '') {
+		$date = array
+		(
+			'id_status' => NULL,
+			'name' => $status,
+			'create_date' => current_time('mysql',1)
+		);
+		if ($wpdb->insert('wp_tk_status', $date)==True) { return True; }
+		else{ return False;}
 	}
-
-
 }
 
 
  ?>
+
