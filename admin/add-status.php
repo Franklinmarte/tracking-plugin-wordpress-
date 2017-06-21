@@ -65,12 +65,7 @@
 </div>
 	<?php 
 		if (isset($_POST['new_status'])) {
-			if (insert_status($_POST['status'])==True) {
-				echo "registrado";
-			}else
-			{
-				echo "no registrado";
-			}
+			if (insert_status($_POST['status'])==True) { echo "registrado";	} else {	echo "no registrado";	}
 		}
 	 ?>
 <br class="clear">

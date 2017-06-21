@@ -78,8 +78,7 @@ function insert_customer($name,$last_name,$email)
 {
 	global $wpdb;
 	//We validate that name, surname and mail are not empty
-
-	if (!$name==' ' and !$last_name==' ' and !$email==' ') {
+	if (!$name=='' and !$last_name=='' and !$email=='') {
 		$date = array
 		(
 			'id_customer' => NULL,
@@ -91,13 +90,11 @@ function insert_customer($name,$last_name,$email)
 		if ($wpdb->insert('wp_tk_customer', $date)==True) { return True; }
 	
 	}else { return False; }
-
 }
-
+//insert new status
 function insert_status($status)
 {
 	global $wpdb;
-
 	if (!$status == '') {
 		$date = array
 		(
@@ -109,7 +106,50 @@ function insert_status($status)
 		else{ return False;}
 	}
 }
+//view all customer
+function view_customer()
+{
+	global $wpdb;
+    $myrows = array();
+    
+    $myrows = $wpdb->get_results( "SELECT * FROM wp_tk_customer" );
+    foreach ($myrows as $myrow) {
+         echo '<option value="'.$myrow->id_customer.'">'.$myrow->name.' '.$myrow->last_name.'</option>';
+     }
+}
+//view all status
+function view_status()
+{
+	global $wpdb;
+    $myrows = array();
+    
+    $myrows = $wpdb->get_results( "SELECT * FROM wp_tk_status" );
+    foreach ($myrows as $myrow) {
+          echo '<option value="'.$myrow->id_status.'" '.selected( $value, $myrow->id_status, TRUE ).'>'.$myrow->name.' </option>';
+	}
+}
 
+function insert_new_process($tracking, $name_process, $id_customer, $status_init, $note_process, $note_private)
+{
+	global $wpdb;
 
- ?>
+	$data = array
+	(
+		'id_process' => NULL,
+		'name' => $name_process,
+		'number_process' => $tracking,
+		'id_customer' => $id_customer,
+		'id_status' => $status_init,
+		'note_process' => $note_process,
+		'note_customer' => '',
+		'note_private' => $note_private,
+		'create_date' => current_time('mysql', 1),
+		'process_update' => current_time('mysql', 1)
+	);
+	if ($wpdb->insert('wp_tk_process', $data)==True) {return True;	}
+	else{return False;}
+
+}
+
+?>
 

@@ -56,7 +56,7 @@
 
 <div class="form-wrap">
 	<h2><?php esc_html_e("Agregar nuevo cliente") ?></h2>
-<form action="" method="POST" name="add-customer">
+<form action="#tabs-1" method="POST" name="add-customer">
 	<label> <b><?php esc_html_e("Nombres*") ?></b></label>
 	<input type="text" name="name" placeholder="<?php esc_html_e("Nombres") ?>"  class="regular-text" /><br><br>
 	<input type="hidden" name="new_customer">
