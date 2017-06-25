@@ -1,3 +1,5 @@
+<?php delete_customer($_GET['delete_customer'], $_GET['delete'])  ?>
+
 <?php if (isset($_POST['new_customer'])): 
 			if (insert_customer($_POST['name'], $_POST['last_name'], $_POST['email'])== true) {
 				echo "registrado";
@@ -30,10 +32,6 @@
 	</tr>
 	</tfoot>
 </table>
-
-
-
-
 <br class="clear">
 </div>
 </div>

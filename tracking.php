@@ -36,3 +36,4 @@ register_activation_hook( __FILE__, 'create_databases_process' );
 
 
 ?>
+<div></div>

@@ -164,7 +164,7 @@ function view_customer_table()
 		echo "<br>";
 		
 		echo "<span class='row-actions'  style='color:#0073aa'>".esc_html__("Editar")." <span>";
-		echo "<a href='admin.php?page=status-process&customer=".$customer->id_customer."&delete=true'";
+		echo "<a href='admin.php?page=status-process&delete_customer=".$customer->id_customer."&delete=true#tabs-1'";
 		echo "<span class='row-actions'  style='color:#f00'   > Eliminar<span>";
 		echo "</a>";
 		echo "</label>";
@@ -186,6 +186,9 @@ function view_status_table()
 		echo "<td class='row-title'>";
 		echo "<label for=''>";
 		esc_attr_e($statu->name);
+		echo "<br>";
+		echo "<a href='admin.php?page=status-process&delete_status=".$statu->id_status."&delete=true#tabs-2'";
+		echo "<span class='row-actions'  style='color:#f00'   > Eliminar<span>";
 		echo "</label>";
 		echo "<tr>";
 	}
@@ -203,6 +206,10 @@ function view_process_table()
 		echo "<label for=''>";
 		esc_attr_e($proces->number_process);
 		echo "</label>";
+		echo "<br>";
+		echo "<span class='row-actions'  style='color:#0073aa'>".esc_html__("Editar")." <span>";
+		echo "<a href='admin.php?page=status-process&delete_process=".$proces->id_process."&delete=true#tabs-3'";
+		echo "<span class='row-actions'  style='color:#f00'   > ".esc_html__("Eliminar")."<span>";
 		echo "</td>";
 		echo "<td>";
 		echo esc_attr_e($proces->name);
@@ -223,6 +230,20 @@ function delete_customer($id, $validate)
 		$wpdb->delete('wp_tk_customer', array('id_customer' => $id ));
 			
 		
+	}
+}
+function delete_status($id, $validate)
+{
+	global $wpdb;
+	if ($validate==true) {
+		$wpdb->delete('wp_tk_status', array('id_status' => $id ));
+	}
+}
+function delete_process($id, $validate)
+{
+	global $wpdb;
+	if ($validate==true) {
+		$wpdb->delete('wp_tk_process', array('id_process' => $id ));
 	}
 }
 ?>

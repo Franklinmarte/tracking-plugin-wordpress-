@@ -1,3 +1,5 @@
+<?php delete_process($_GET['delete_process'], $_GET['delete'])  ?>
+
 <?php if (isset($_POST["process_new"])): 
 		if (insert_new_process($_POST["id_process"],$_POST["name_process"],$_POST["id_customer"], $_POST["id_status"], $_POST["note_public"], $_POST["note_private"])==True) {
 			echo "Registrado";

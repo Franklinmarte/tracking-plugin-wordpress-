@@ -1,6 +1,7 @@
+<?php delete_status($_GET['delete_status'], $_GET['delete'])  ?>
 <?php 
 		if (isset($_POST['new_status'])) {
-			if (insert_status($_POST['status'])==True) { echo "registrado";	} else {	echo "no registrado";	}
+			if (insert_status($_POST['status'])==True) { echo "registrado";	} else {echo "no registrado";	}
 		}
 	 ?>
 <div id="col-right">
@@ -9,7 +10,7 @@
 <table class="widefat">
 	<thead >
 	<tr>
-		<th style="text-align: center;" class="row-title"><?php esc_attr_e( 'Titulo de estado', 'wp_admin_style' ); ?></th>
+		<th style="text-align: center;" class="row-title"><?php esc_attr_e( 'Titulo de estado' ); ?></th>
 	
 	</tr>
 	</thead>
@@ -18,7 +19,7 @@
 	</tbody>
 	<tfoot >
 	<tr>
-		<th style="text-align: center;" class="row-title"><?php esc_attr_e( 'Table header cell #1', 'wp_admin_style' ); ?></th>
+		<th style="text-align: center;" class="row-title"><?php esc_attr_e( 'Titulo de estado' ); ?></th>
 		
 	</tr>
 	</tfoot>
