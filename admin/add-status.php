@@ -1,3 +1,8 @@
+<?php 
+		if (isset($_POST['new_status'])) {
+			if (insert_status($_POST['status'])==True) { echo "registrado";	} else {	echo "no registrado";	}
+		}
+	 ?>
 <div id="col-right">
 <div class="col-wrap">
 <p><strong><?php esc_html_e("Todos los estados") ?></strong></p>
@@ -9,34 +14,7 @@
 	</tr>
 	</thead>
 	<tbody style="text-align: center;">
-	<tr>
-		<td class="row-title"><label for="tablecell"><?php esc_attr_e(
-					'Table Cell #1, with label', 'wp_admin_style'
-				); ?></label></td>
-		
-	</tr>
-	<tr class="alternate">
-		<td class="row-title"><label for="tablecell"><?php esc_attr_e(
-					'Table Cell #3, with label and class', 'wp_admin_style'
-				); ?> <code>alternate</code></label></td>
-
-	</tr>
-	<tr>
-		<td class="row-title"><?php esc_attr_e( 'Table Cell #5, without label', 'wp_admin_style' ); ?></td>
-	
-	</tr>
-	<tr class="alt">
-		<td class="row-title"><?php esc_attr_e(
-				'Table Cell #7, without label and with class', 'wp_admin_style'
-			); ?> <code>alt</code></td>
-		
-	</tr>
-	<tr class="form-invalid">
-		<td class="row-title"><?php esc_attr_e(
-				'Table Cell #9, without label and with class', 'wp_admin_style'
-			); ?> <code>form-invalid</code></td>
-		
-	</tr>
+	<?php view_status_table() ?>
 	</tbody>
 	<tfoot >
 	<tr>
@@ -63,11 +41,7 @@
 	<input class="button-primary" type="submit" name="add_customer" value="<?php esc_attr_e( 'Agregar' ); ?>" />
 </form>
 </div>
-	<?php 
-		if (isset($_POST['new_status'])) {
-			if (insert_status($_POST['status'])==True) { echo "registrado";	} else {	echo "no registrado";	}
-		}
-	 ?>
+	
 <br class="clear">
 </div>
 </div>

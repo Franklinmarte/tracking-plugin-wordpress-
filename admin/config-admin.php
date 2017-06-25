@@ -5,10 +5,10 @@
 	{
 
 		  add_menu_page(
-		    'trancking Form',
+		    'Status Process',
 		    'tracking',
 		    'manage_options',
-		    'tracking-form',
+		    'status-process',
 		    'tracking_opotion_page'
 		  );
 }

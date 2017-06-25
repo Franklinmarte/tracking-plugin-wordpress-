@@ -3,6 +3,7 @@
     jQuery( "#tabs" ).tabs();
   } );
   </script>
+<?php delete_customer($_GET['customer'], $_GET['delete'])  ?>
 <div id="tabs">
  
 <ul class="nav-tab-wrapper">

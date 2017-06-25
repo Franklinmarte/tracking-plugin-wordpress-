@@ -150,6 +150,80 @@ function insert_new_process($tracking, $name_process, $id_customer, $status_init
 	else{return False;}
 
 }
+function view_customer_table()
+{
+	global $wpdb;
+	$customers = array();
 
+	$customers =$wpdb->get_results( "SELECT * FROM wp_tk_customer" );
+	foreach ($customers as $customer) {
+		echo "<tr>";
+		echo "<td class='row-title'>";
+		echo "<label for='tablecell'>";
+		esc_attr_e($customer->name);
+		echo "<br>";
+		
+		echo "<span class='row-actions'  style='color:#0073aa'>".esc_html__("Editar")." <span>";
+		echo "<a href='admin.php?page=status-process&customer=".$customer->id_customer."&delete=true'";
+		echo "<span class='row-actions'  style='color:#f00'   > Eliminar<span>";
+		echo "</a>";
+		echo "</label>";
+		echo "<td class=''>";
+		
+		esc_attr_e($customer->email);	
+		echo "<td>";
+		echo "<tr>";
+	}
+}
+function view_status_table()
+{
+	global $wpdb;
+	$status = array();
+
+	$status =$wpdb->get_results( "SELECT * FROM wp_tk_status" );
+	foreach ($status as $statu) {
+		echo "<tr>";
+		echo "<td class='row-title'>";
+		echo "<label for=''>";
+		esc_attr_e($statu->name);
+		echo "</label>";
+		echo "<tr>";
+	}
+}
+function view_process_table()
+{
+	global $wpdb;
+	$process = array();
+	$status = array();
+
+	$process =$wpdb->get_results( "SELECT * FROM wp_tk_process" );
+	foreach ($process as $proces) {
+		echo "<tr>";
+		echo "<td class='row-title'>";
+		echo "<label for=''>";
+		esc_attr_e($proces->number_process);
+		echo "</label>";
+		echo "</td>";
+		echo "<td>";
+		echo esc_attr_e($proces->name);
+		echo "</td>";
+		echo "<td>";
+		$status = $wpdb->get_results("SELECT * FROM wp_tk_status WHERE id_status = ".$proces->id_status."");
+		foreach ($status as $statu ) {
+			echo $statu->name;
+		}
+		echo "</td>";
+		echo "<tr>";
+	}
+}
+function delete_customer($id, $validate)
+{
+	global $wpdb;
+	if ($validate==true) {
+		$wpdb->delete('wp_tk_customer', array('id_customer' => $id ));
+			
+		
+	}
+}
 ?>
 

@@ -20,7 +20,7 @@ include 'function/databases.php';
 
 function style_tracking()
 { 
-	wp_enqueue_style( 'style_tracking', plugins_url( 'tracking/css/style_tracking.css' ) );
+	wp_enqueue_style( 'style_tracking', plugins_url( 'tracking/css/style_process.css' ) );
 }
 function script_jquery_ui()
 {
