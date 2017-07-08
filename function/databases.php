@@ -47,6 +47,27 @@ function create_databases_status()
 	) $charset_collate;";
 	require_once( ABSPATH .  'wp-admin/includes/upgrade.php' );
 	dbDelta($sql);
+
+}
+//create databases estatus process
+function create_databases_process_estatus()
+{
+	global $wpdb;
+
+	$table_name = $wpdb->prefix .  'tk_process_estatus';
+
+	$charset_collate = $wpdb->get_charset_collate();
+
+	$sql = "CREATE TABLE $table_name (
+	id_status INT(11) NOT NULL AUTO_INCREMENT,
+	process_id INT(11) NOT NULL,
+	estatus VARCHAR(50) NOT NULL,
+	estatus_internal VARCHAR(2),
+	create_date DATE NOT NULL,
+	PRIMARY KEY (id_status) 
+	) $charset_collate;";
+	require_once( ABSPATH .  'wp-admin/includes/upgrade.php' );
+	dbDelta($sql);
 }
 //create databases process
 function create_databases_process()
@@ -146,6 +167,7 @@ function insert_new_process($tracking, $name_process, $id_customer, $status_init
 		'create_date' => current_time('mysql', 1),
 		'process_update' => current_time('mysql', 1)
 	);
+
 	if ($wpdb->insert('wp_tk_process', $data)==True) {return True;	}
 	else{return False;}
 
@@ -207,7 +229,7 @@ function view_process_table()
 		esc_attr_e($proces->number_process);
 		echo "</label>";
 		echo "<br>";
-		echo "<span class='row-actions'  style='color:#0073aa'>".esc_html__("Editar")." <span>";
+		echo "<a href='admin.php?page=status-process&editprocess=".$proces->id_process."'><span class='row-actions'  style='color:#0073aa'>".esc_html__("Editar")." <span></a>";
 		echo "<a href='admin.php?page=status-process&delete_process=".$proces->id_process."&delete=true#tabs-3'";
 		echo "<span class='row-actions'  style='color:#f00'   > ".esc_html__("Eliminar")."<span>";
 		echo "</td>";
@@ -245,6 +267,35 @@ function delete_process($id, $validate)
 	if ($validate==true) {
 		$wpdb->delete('wp_tk_process', array('id_process' => $id ));
 	}
+}
+
+function process_by_id($id)
+{
+	global $wpdb;
+
+		$process = $wpdb->get_results("SELECT * FROM wp_tk_process WHERE id_process = $id LIMIT 1");
+
+		return $process;
+}
+
+function edit_process_status($process_id, $status, $internal_process)
+{
+	global $wpdb;
+
+	$status = array(
+		'id_status' => NULL,
+		'process_id' => $process_id,
+		'estatus' => $status,
+		'create_date' => current_time('mysql', 1)
+		);
+	if ($wpdb->insert('wp_tk_process_estatus', $status)==true) {
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+
 }
 ?>
 

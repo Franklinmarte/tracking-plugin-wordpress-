@@ -1,4 +1,11 @@
-<script>
+<?php 
+  if (isset($_GET["editprocess"])) {
+  include 'editprocess.php';
+  }else
+  {
+
+    ?>
+    <script>
   jQuery( function() {
     jQuery( "#tabs" ).tabs();
   } );
@@ -22,3 +29,9 @@
     <?php include "add-process.php"; ?>
 
   </div>
+
+    <?php 
+  }
+
+
+ ?>
